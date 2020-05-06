@@ -1,1 +1,14 @@
-{{yield}}
+<button
+  class={{concat "crunchy-button cb-bg-pink-500 cb-text-red-400"
+    (if this.isRunning " crunchy-button--disabled")}}
+  aria-label={{@label}}
+  type={{or @type "button"}}
+  ...attributes
+  {{on "click" this.clickAction}}
+>
+  {{#if (has-block)}}
+    {{yield (hash isRunninng=this.isRunning)}}
+  {{else}}
+    {{@label}}
+  {{/if}}
+</button>

@@ -1,13 +1,13 @@
 {
   "name": "crunchy-ui",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A collection of UI components and helpers for Ember applications.",
   "keywords": [
     "ember-addon"
   ],
   "repository": "",
   "license": "MIT",
-  "author": "",
+  "author": "Crunchy Bananas",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -24,9 +24,14 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.2",
+    "broccoli-funnel": "^3.0.2",
+    "broccoli-merge-trees": "^4.2.0",
+    "broccoli-postcss": "^5.1.0",
     "ember-cli-babel": "^7.18.0",
     "ember-cli-htmlbars": "^4.2.3",
-    "ember-cli-postcss": "^6.0.0",
+    "ember-composable-helpers": "^4.0.0",
+    "ember-svg-jar": "^2.2.3",
+    "ember-truth-helpers": "^2.1.0",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.4.4"
@@ -67,6 +72,9 @@
     "edition": "octane"
   },
   "ember-addon": {
+    "before": [
+      "ember-cli-postcss"
+    ],
     "configPath": "tests/dummy/config"
   }
 }

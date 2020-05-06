@@ -1,0 +1,9 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "animations";
+
+.crunchy-button {
+  @apply cb-text-xl cb-bg-blue-500 cb-text-white;
+}

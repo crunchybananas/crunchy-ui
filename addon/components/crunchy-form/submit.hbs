@@ -1,0 +1,15 @@
+<CrunchyButton
+  @type="submit"
+  @task={{@task}}
+  aria-label={{@label}}
+  ...attributes as |button|>
+  {{#if button.isRunning}}
+    <SvgJar @icon="circle-notch-solid" class="cb-spin" />
+  {{else}}
+    {{#if (has-block)}}
+      {{yield}}
+    {{else}}
+      {{@label}}
+    {{/if}}
+  {{/if}}
+</CrunchyButton>
