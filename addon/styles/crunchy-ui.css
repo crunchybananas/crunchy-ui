@@ -1,9 +1,9 @@
-@import "tailwindcss/base.css";
-@import "tailwindcss/components.css";
-@import "tailwindcss/utilities.css";
+@import "crunchy-ui/node_modules/tailwindcss/base.css";
+@import "crunchy-ui/node_modules/tailwindcss/components.css";
+@import "crunchy-ui/node_modules/tailwindcss/utilities.css";
 
 @import "animations.css";
 
 .crunchy-button {
-  @apply cb-text-xl cb-bg-blue-500 cb-text-white;
+  @apply text-xl bg-pink-500 text-white px-2 py-1;
 }

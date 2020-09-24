@@ -35,6 +35,7 @@
     "ember-truth-helpers": "^2.1.0",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
+    "static-postcss-addon-tree": "^2.0.0",
     "tailwindcss": "^1.8.10"
   },
   "devDependencies": {

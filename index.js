@@ -1,6 +1,5 @@
 'use strict';
-const broccoliPostCSS = require('broccoli-postcss')
-const mergeTrees = require('broccoli-merge-trees');
+const staticPostcssAddonTree = require('static-postcss-addon-tree');
 const funnel = require('broccoli-funnel');
 const { join } = require('path');
 
@@ -36,7 +35,7 @@ module.exports = {
 
   treeForAddon() {
     const tree = this._super(...arguments);
-    
+
     // Create addon tree without any styles
     const addonWithoutStyles = funnel(tree, {
       exclude: ['**/*.css'],
@@ -46,25 +45,22 @@ module.exports = {
     if (this._shouldExcludeStyles()) {
       return addonWithoutStyles;
     }
-
-    // Otherwise, process the CSS and merge to include with addon tree
-    const addonStyles = funnel(tree, {
-      include: ['crunchy-ui.css']
-    });
-
-    let processedStyles = broccoliPostCSS(addonStyles, {
-      plugins: [
+    
+    return staticPostcssAddonTree(tree, {
+      addonName: 'crunchy-ui',
+      addonFolder: __dirname,
+      project: this.app.project,
+      postCssPlugins: [
         CssImport({
-          path: join(__dirname, 'addon', 'styles'),
+          path: join(__dirname, 'addon', 'styles')
         }),
         Tailwind(join(__dirname, 'config', 'tailwind.config.js')),
         PresetEnv({
           stage: 3,
           features: { 'nesting-rules': true }
         })
-      ]});
-
-    return mergeTrees([addonWithoutStyles, processedStyles]);
+      ]
+    });
   },
 
   _shouldExcludeStyles() {
