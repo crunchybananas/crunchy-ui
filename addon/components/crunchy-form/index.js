@@ -5,16 +5,16 @@ import { or } from '@ember/object/computed';
 import { task, all, timeout } from 'ember-concurrency';
 import { isNone, isPresent } from '@ember/utils';
 import { assert } from '@ember/debug';
-import config from 'diglocal-manage/config/environment';
+// import config from 'diglocal-manage/config/environment';
 
-const TASK_DEBOUNCE = config.environment !== 'test' ? 250 : 0;
+const TASK_DEBOUNCE = 250; //config.environment !== 'test' ? 250 : 0;
 
 /**
  * @class CrunchyForm
  * @namespace Components
- *  
+ *
  * ```hbs
- * <CrunchyForm 
+ * <CrunchyForm
  *  @model={{this.myFormModel}}
  *  @formSchema={{this.myFormSchema}}
  *  @onSubmit={{this.submitFormAction}}
@@ -32,13 +32,13 @@ const TASK_DEBOUNCE = config.environment !== 'test' ? 250 : 0;
  * @yield {Action} form.validateForm
  * @yield {Action} form.submitForm
  * @yield {Action} form.cancelForm
- * 
+ *
  */
 export default class CrunchyFormComponent extends Component {
   _onSubmit = () => {};
   _onCancel = () => {};
   _debounceSubmit = false;
-  
+
   @tracked didSubmit = false;
   @tracked formErrors = EmberObject.create();
   @tracked formMessages = [];
