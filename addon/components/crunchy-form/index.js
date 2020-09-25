@@ -86,8 +86,7 @@ export default class CrunchyFormComponent extends Component {
    * @param {string} field
    * @return {Promise<any, ValidationError>} - returns the valid value or a yup ValidationError
   */
-  @action
-  async validateField(field) {
+  @action async validateField(field) {
     let formSchema = this.args.formSchema;
     let isUndefinedSchema = isNone(formSchema) || Object.prototype.hasOwnProperty.call(formSchema['fields'], field);
     // If no schema is defined for the given field, assume the field is valid
@@ -111,8 +110,7 @@ export default class CrunchyFormComponent extends Component {
    * Validate all fields in the model against the formSchema
    * @return {Promise<Object, ValidationError>} - returns the valid form model or a yup ValidationError
   */
-  @action
-  async validateForm() {
+  @action async validateForm() {
     let formSchema = this.args.formSchema;
     // If no formSchema is defined, assume model is valid
     if (isNone(formSchema)) {
@@ -147,16 +145,14 @@ export default class CrunchyFormComponent extends Component {
   })
   cancelTask;
 
-  @action
-  async cancelForm() {
+  @action async cancelForm() {
     await this.cancelTask.perform();
   }
 
   /**
   * @param {Event} event - the form submit event
   */
-  @action
-  async submitForm(event) {
+  @action async submitForm(event) {
     event.preventDefault();
     return await this.submitTask.perform();
   }

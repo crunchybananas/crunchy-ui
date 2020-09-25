@@ -1,0 +1,21 @@
+<ModalDialog
+  @clickOutsideToClose={{@clickOutsideToClose}}
+  @translucentOverlay={{@translucentOverlay}}
+  @containerClass="crunchy-modal relative"
+>
+  <CrunchyButton
+    @onClick={{this.close}}
+    @disabled={{this.isDisabled}}
+    @aria-label="Close modal window"
+    @class="crunchy-modal__close absolute top-0 right-0 py-1 px-2 leading-none overflow-hidden"
+    @testId="close-modal"
+  >
+    <span aria-hidden="true">&times;</span>
+  </CrunchyButton>
+
+  {{yield (hash
+    header=(component "crunchy-modal/header")
+    body=(component "crunchy-modal/body")
+    footer=(component "crunchy-modal/footer")
+  )}}
+</ModalDialog>

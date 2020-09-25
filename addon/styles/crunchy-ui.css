@@ -8,3 +8,106 @@
   /* Demo, totally subject to change. */
   @apply font-sans text-xl bg-pink-500 text-white px-4 py-2 rounded;
 }
+
+.crunchy-confirm {
+  &__modal-footer {
+    @apply flex justify-end;
+    > .crunchy-button {
+      @apply ml-2;
+    }
+  }
+  &__errors {
+    @apply mt-1 px-8 text-sm;
+  }
+}
+
+.crunchy-modal {
+  @apply py-8 pt-12;
+  @apply rounded relative max-w-xl text-xl;
+
+  &__close {
+    @apply text-5xl font-thin font-sans py-0 px-3;
+  }
+  &__header {
+    @apply font-bold text-4xl;
+    @apply px-8;
+    &--border-b {
+      @apply border-b pb-4;
+    }
+  }
+  &__body {
+    @apply px-8 py-2;
+  }
+  &__footer {
+    @apply px-8;
+  }
+  form {
+    @apply text-base;
+  }
+}
+
+/*
+* MODAL APPEARANCE
+* Default: https://github.com/yapplabs/ember-modal-dialog/blob/master/app/styles/ember-modal-dialog/ember-modal-appearance.css
+*/
+
+.ember-modal-dialog {
+  /* @apply rounded bg-brand-gray-light border-brand-gray relative max-w-xl text-xl; */
+}
+.ember-modal-overlay.translucent {
+  background-color: rgba(2, 2, 2, .75);
+}
+
+/*
+* MODAL STRUCTURE
+* Default: https://github.com/yapplabs/ember-modal-dialog/blob/master/app/styles/ember-modal-dialog/ember-modal-structure.css
+*/
+
+.ember-modal-dialog {
+  z-index: 1001;
+  position: fixed;
+}
+
+.ember-modal-dialog.emd-in-place {
+  position: static;
+}
+
+.ember-modal-wrapper.emd-static.emd-wrapper-target-attachment-center .ember-modal-dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ember-modal-wrapper.emd-animatable.emd-wrapper-target-attachment-center {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ember-modal-wrapper.emd-animatable.emd-wrapper-target-attachment-center .ember-modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ember-modal-wrapper.emd-animatable .ember-modal-dialog {
+  position: relative;
+}
+
+.ember-modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999; /* Important value! Without this, PowerSelect options within in a modal show up behind overlay */
+  padding: 1rem;
+}
+
+

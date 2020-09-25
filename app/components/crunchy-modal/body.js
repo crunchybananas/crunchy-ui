@@ -1,0 +1,1 @@
+export { default } from 'crunchy-ui/components/crunchy-modal/body';

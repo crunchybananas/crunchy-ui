@@ -1,0 +1,33 @@
+{{#if @show}}
+  <CrunchyModal
+    @clickOutsideToClose={{false}}
+    @translucentOverlay={{true}}
+    @onClose={{this.cancel}}
+    as |modal|>
+    <modal.body class="crunchy-confirm__modal-body">
+      {{yield}}
+    </modal.body>
+    <modal.footer class="crunchy-confirm__modal-footer">
+      {{#if this.showCancel}}
+        <CrunchyButton @class="crunchy-button--modal-cancel" @onClick={{this.cancel}} @disabled={{this.isDisabled}} @testId="confirm-cancel">
+          {{this.cancelText}}
+        </CrunchyButton>
+      {{/if}}
+
+      <CrunchyButton @class="crunchy-button--modal-confirm" @task={{this.confirmTask}} @disabled={{this.isDisabled}} @testId="confirm-ok">
+        {{this.confirmText}}
+      </CrunchyButton>
+    </modal.footer>
+
+    {{#if (and this.didConfirm this.confirmTask.last.isError)}}
+      <div class="crunchy-confirm__errors">
+        Oops, an error occurred!
+        {{#each this.confirmTask.last.error.errors as |error|}}
+          <div>{{error.detail}}</div>
+        {{else}}
+          <div>{{this.error.message}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </CrunchyModal>
+{{/if}}

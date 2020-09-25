@@ -5,11 +5,11 @@ import { action } from '@ember/object';
 /**
  * @class CrunchyButton
  * @namespace Components
- *  
+ *
  * ```hbs
  * <CrunchyButton @onClick={{this.myAction}} @label="Click Me" />
  *
- * <CrunchyButton 
+ * <CrunchyButton
  *  @task={{this.myTask}}
  *  as |button|>
  *    ...
@@ -18,7 +18,7 @@ import { action } from '@ember/object';
  * @class CrunchyButton
  * @yield {Hash} button
  * @yield {boolean} button.isRunning
- * 
+ *
  */
 export default class CrunchyButtonComponent extends Component {
   _onClick = () => {};
@@ -39,8 +39,7 @@ export default class CrunchyButtonComponent extends Component {
   /**
   * @param {Event} event - the click event
   */
-  @action
-  clickAction(event) {
+  @action clickAction(event) {
     event.preventDefault();
 
     if (this.args.task && typeof this.args.task.perform === 'function') {
