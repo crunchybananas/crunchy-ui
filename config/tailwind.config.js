@@ -2,12 +2,13 @@ module.exports = {
   prefix: 'cb-',
   purge: {
     enabled: true,
+    preserveHtmlElements: false,
     content: [
-      './addon/**/*.hbs',
-      './addon/**/*.js',
-      './app/**/*.hbs',
-      './app/**/*.js'
-    ]
+      './node_modules/crunchy-ui/addon/**/*.hbs',
+      './node_modules/crunchy-ui/addon/**/*.js',
+      './node_modules/crunchy-ui/app/**/*.hbs',
+      './node_modules/crunchy-ui/app/**/*.js',
+    ],
   },
   theme: {},
   variants: {},
