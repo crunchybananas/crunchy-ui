@@ -9,7 +9,9 @@ const Tailwind = require("tailwindcss");
 
 module.exports = {
   name: require('./package').name,
-
+  isDevelopingAddon() {
+    return true;
+  },
   options: {
     svgJar: {
       sourceDirs: [
@@ -45,7 +47,7 @@ module.exports = {
     if (this._shouldExcludeStyles()) {
       return addonWithoutStyles;
     }
-    
+
     return staticPostcssAddonTree(tree, {
       addonName: 'crunchy-ui',
       addonFolder: __dirname,
