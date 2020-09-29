@@ -56,7 +56,7 @@ module.exports = {
         CssImport({
           path: join(__dirname, 'addon', 'styles')
         }),
-        Tailwind(join(__dirname, 'config', 'tailwind.config.js')),
+        new Tailwind(join(__dirname, 'config', 'tailwind.config.js')),
         PresetEnv({
           stage: 3,
           features: { 'nesting-rules': true }
