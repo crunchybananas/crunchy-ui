@@ -48,21 +48,26 @@ module.exports = {
       return addonWithoutStyles;
     }
 
-    return staticPostcssAddonTree(tree, {
+    const addonWithCompiledStyles = staticPostcssAddonTree(tree, {
       addonName: 'crunchy-ui',
       addonFolder: __dirname,
       project: this.app.project,
       postCssPlugins: [
         CssImport({
-          path: join(__dirname, 'addon', 'styles')
+          path: [
+            join(__dirname, 'addon', 'styles'),
+            join(__dirname, 'node_modules', 'tailwindcss')
+          ]
         }),
-        new Tailwind(join(__dirname, 'config', 'tailwind.config.js')),
         PresetEnv({
           stage: 3,
           features: { 'nesting-rules': true }
-        })
+        }),
+        new Tailwind(join(__dirname, 'config', 'tailwind.config.js')),
       ]
     });
+
+    return addonWithCompiledStyles;
   },
 
   _shouldExcludeStyles() {
